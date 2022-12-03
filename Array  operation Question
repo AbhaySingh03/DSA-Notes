@@ -1,0 +1,30 @@
+//Q)To find minimum no of operation to make all the elements zero
+//Convert the subarray into min(that is zero)that is not present in subarray
+
+//logic
+
+// In this question answer could not be greater than 2 
+// 1) first take range l to r convert the range into min of the subarray then covert into zero means max 2 steps.
+// if all are zero then step is zero
+// if a[1,2,3,4,0,0,0] then ans is 1
+class Solution {
+    public static int arrayOperations(int n, int[] arr) {
+       
+            int count_ans = 0;
+  int count_non_zero = 0;
+
+  for(int i=0;i<n;i++){
+    if(arr[i]!=0){
+        count_non_zero++;
+        if(count_non_zero==1){
+            count_ans++;
+        }
+    }
+    else if(arr[i]==0){
+        count_non_zero=0;
+    }
+  }
+
+  return Math.min(2,count_ans);
+    }
+}
