@@ -1,0 +1,46 @@
+//Date = 25/12/2022
+
+//Q) The next number is the sum of k precedding number
+
+//Link https://practice.geeksforgeeks.org/contest/weekly-interview-series-82/problems#
+
+//Test case Input:
+
+//Input:
+//N = 6, K = 1
+//GeekNum[] = {4}
+//Output: 
+//4
+//Explanation: 
+//Terms are 4, 4, 4, 4, 4, 4
+
+//N = 5, K = 3
+//GeekNum[] = {0, 1, 2}
+//Output: 
+//6
+//Explanation: 
+//Terms are 0, 1, 2, 3, 6.
+//So the 5th term is 6
+
+class Solution {
+    static long solve(int N, int K, ArrayList<Long> GeekNum) {
+        //code here
+        long ans =0;
+       // long a[] = new long[N];
+       
+            int i =0;
+            
+      while(i != N-1){
+          int m = i;
+          for(;m< GeekNum.size();m++){
+              ans += GeekNum.get(m);
+             
+          }
+         GeekNum.add(ans);
+         
+          i++;
+          ans =0;
+      }
+        return GeekNum.get(i);
+    }
+}
