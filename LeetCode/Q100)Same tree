@@ -5,7 +5,7 @@
 //Recursive code
 class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
-    //if reached at end 
+    //to check equal no of nodes (DOUT)
        if(p == q){
            return true;
        }
