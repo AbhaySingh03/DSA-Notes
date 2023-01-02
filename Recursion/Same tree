@@ -1,0 +1,24 @@
+//Datye - 24/12/2022
+
+//In this questtion the values of 2 binary tree is same or not
+
+//Recursive code
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+    //This is the base cse when both reach at end of both tree that is null it will return true 
+       if(p == q){
+           return true;
+       }
+       
+       //first check if any tree p or q reached at end or null then return false 
+       //then check if val is equal or not 
+       //if not return false
+       if((p == null || q == null) || p.val != q.val){
+           return false;
+       }
+       
+       //continue this process for same left and right
+        return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
+    }
+   
+}
