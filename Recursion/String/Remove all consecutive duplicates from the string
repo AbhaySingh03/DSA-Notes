@@ -1,0 +1,65 @@
+// Date - 03/01/2022
+
+//Q)Given a string S, The task is to remove all the consecutive duplicate characters of the string and return the resultant string. 
+//Input: S = “geeksforgeeks”
+//Output: geksforgeks
+//Input: S = “aabccba”
+//Output: abcba
+
+package Recursion;
+
+import java.util.Arrays;
+public class Removeconsecutivecharacter {
+	public static String removeconsecutivecharRecursive(String input) {
+		if(input.length() <= 1) return input;
+		if(input.charAt(0) == input.charAt(1)) {
+			System.out.println(input.substring(0));   // this line is for Debugging
+//			geeksforgeeks                         // Console output 
+//			eksforgeeks
+//			eksforgeeks
+//			ksforgeeks
+//			sforgeeks
+//			forgeeks
+//			orgeeks
+//			rgeeks
+//			geeks
+//			eks
+//			eks
+//			ks
+//			geksforgeks
+			return removeconsecutivecharRecursive(input.substring(1));
+		}else {
+			System.out.println(input.charAt(0) + input.substring(1));
+			System.out.println(input.charAt(0));
+			return input.charAt(0) + 
+					removeconsecutivecharRecursive(input.substring(1));
+		}
+		
+	}
+	public static void removeconsecutivechariterative(char[] s) {
+		int l = s.length;
+		if(l <= 1) 
+			return;
+		int j=0;
+		for(int i = 1;i < l;i++) {
+			if(s[j] != s[i]) {
+				j++;          // j plays a crusial role by incrementing 
+				              // also removes the repeating char 
+				s[j] = s[i];
+			}
+		}
+		
+		System.out.println(Arrays.copyOfRange(s, 0, j+1));
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s = "geeksforgeeks";
+		char[] c = s.toCharArray();
+		
+		//removeconsecutivechariterative(c);
+		
+		System.out.println(removeconsecutivecharRecursive(s));
+	}
+
+}
