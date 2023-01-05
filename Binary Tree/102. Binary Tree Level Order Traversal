@@ -1,0 +1,66 @@
+//Date - 05 - 01-2023
+//Q)Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<List<Integer>>  levelOrder(TreeNode root) {
+        
+      List<List<Integer>> ans = new ArrayList<List<Integer>>(); // Storing the level order instead of printing it
+      
+    // Base case
+        if(root == null) return ans;
+        //for temporary storing the tree value
+            List<Integer> curLis = new ArrayList<>();  
+            
+         // This queue is of TreeNode Not Integer
+            Queue<TreeNode> q = new LinkedList<>();
+            // Adding the root that completes level 1
+           q.add(root);  
+           // adding null that means the a level is fully added into the Queue
+           q.offer(null);
+            
+          while(!q.isEmpty()){
+                  TreeNode cur = q.poll();
+                  //checking if one level is completed or not by checking it is null or not
+                  if(cur == null){
+                          ans.add(curLis);
+                          if(q.isEmpty()) return ans; // if all the nodes are visited then
+                          // if null is encountered AND queue is not empty that means a full level is added into the queue
+                          // and further adding null help to print level by level
+                          q.offer(null);
+                          // One level is added into the list then it added into ans list then ney ArrayList is created for next level storage 
+                          curLis = new ArrayList<>();
+                          
+                  }else{
+                  
+                        //this curLis is storing the levels
+                          curLis.add(cur.val);
+                          
+                          if(cur.left != null){
+                                  q.add(cur.left);
+                          }
+                           if(cur.right != null){
+                                  q.add(cur.right);
+                          }
+                  }
+          }
+                    
+        return ans;
+            
+    }
+}
