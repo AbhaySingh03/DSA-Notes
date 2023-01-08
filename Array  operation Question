@@ -7,7 +7,7 @@
 //logic
 
 // In this question answer could not be greater than 2 
-// 1) first take range l to r convert the range into min of the subarray then covert into zero means max 2 steps.
+// 1) first take range l to r convert the range into min non negative no. that is not present in the suarray then covert into zero means max 2 steps.
 // if all are zero then step is zero
 // if a[1,2,3,4,0,0,0] then ans is 1
 class Solution {
