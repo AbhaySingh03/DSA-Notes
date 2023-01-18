@@ -1,0 +1,37 @@
+//Date - 18/01/2023
+
+
+class HelloWorld {
+    public static void main(String[] args) {
+        String s = "A1:A1";
+        String[] a=s.split(":");
+        String x="",y="";
+        x=a[0];
+        String st1=x.replaceAll("[^A-Za-z]", "");  
+     //  System.out.println(st1);
+      // System.out.println();
+      String st2=x.replaceAll("[^0-9]", "");  
+     // System.out.println(st2);
+        y=a[1];
+        String st3=y.replaceAll("[^A-Za-z]", "");  
+        String st4=y.replaceAll("[^0-9]", "");  
+        int p =st1.charAt(0) - '0';
+        // System.out.println(p);
+         int q = Integer.parseInt(st2);
+         // System.out.println(q);
+          int r = st3.charAt(0) - '0';
+        //  System.out.println(r);
+           int t = Integer.parseInt(st4);
+         //  System.out.println(t);
+         if(p == r && q == t){
+             System.out.println("Invalid");
+         }else{
+           int ans1 = r - p + 1;
+            //System.out.println(ans1);
+            int ans2 =   t - q + 1;
+           
+            int ans = ans1 * ans2;
+            System.out.println(ans);
+         }
+    }
+}
