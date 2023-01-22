@@ -1,0 +1,53 @@
+// Date - 22-01-2023
+
+// package Recursion;
+
+public class NQueen {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        int chess[][] = new int[4][4];
+        
+        printBoard(chess,"",0);
+	}
+	// qsf = Queen so far
+	
+ public static void printBoard(int[][] chess,String qsf,int row) {
+	 if(row == chess.length) {
+		 System.out.println(qsf);
+		 return;
+	 }
+	 // IN recursion the parameter (i.e. row) is the level
+	//  the inside loop (i.e. col) is run on number of option here
+	 // No. of option is col
+	 //             0r  (this is Level)
+	//           0c/ \1c ( 0,1 is option  i.e c=column)
+	 //           1r  1r (this is level)
+	 for(int col =0;col<chess.length;col++) {
+		 if(isItaSafePlaceForTheQueen(chess,row,col)) {
+		 chess[row][col] = 1; //left part of the above tree run
+		 printBoard(chess,qsf + row +"-"+col+",",row+1);
+		 chess[row][col] = 0;//right part of the above tree run
+	 }
+	 }
+ }
+ public static boolean isItaSafePlaceForTheQueen(int[][] chess,int row,int col) {
+	 // this loop checks upward direction column
+	 // is same but row decreases
+	 for(int i=row-1,j=col;i>=0;i--) {
+		 if(chess[i][j] == 1) return false;
+	 }
+	// this loop checks upward digonal right to left direction 
+	// column and row both decreases 
+	 for(int i=row-1,j=col-1;i>=0 && j>=0;i--,j--) {
+		 if(chess[i][j] == 1) return false;
+	 }
+	// this loop checks upward digonal right to left direction 
+   // column and row both decreases 
+	 for(int i=row-1,j=col+1;i>=0 && j<chess.length;i--,j++) {
+		 if(chess[i][j] == 1) return false;
+	 }
+	 
+	 return true;
+ }
+}
