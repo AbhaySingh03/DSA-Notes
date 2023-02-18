@@ -22,7 +22,7 @@ class Solution {
         void solve(TreeNode root){
                 if(root == null) return;
                 solve(root.left);
-                solve(root.right);
+                solve(root.right);   //Similar to postorder traversal
                 TreeNode temp = root.left;
                 root.left = root.right;
                 root.right = temp;
